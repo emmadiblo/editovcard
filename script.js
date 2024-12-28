@@ -15,13 +15,35 @@ function addContactField() {
     div.classList.add('contact-entry');
     div.innerHTML = `
         <label>Entrez pour Contact ${contactIndex + 1}</label><br>
-        <input type="text" id="name-${contactIndex}" placeholder="Nom" required><br>
-        <input type="number" id="number-${contactIndex}" placeholder="Numéro" required><br>
-        <input type="email" id="email-${contactIndex}" placeholder="Email (facultatif)"><br>
-        <input type="text" id="address-${contactIndex}" placeholder="Adresse (facultatif)"><br>
-        <input type="text" id="organization-${contactIndex}" placeholder="Organisation (facultatif)"><br>
-        <input type="text" id="jobTitle-${contactIndex}" placeholder="Titre professionnel (facultatif)"><br>
-        <input type="url" id="website-${contactIndex}" placeholder="Site web (facultatif)"><br><br>
+        <div class="input-group">
+            <span class="icon">👤</span>
+            <input type="text" id="name-${contactIndex}" placeholder="Nom et prénom" required>
+        </div>
+        <div class="input-group">
+            <span class="icon">📞</span>
+            <input type="number" id="number-${contactIndex}" placeholder="Numéro" required>
+        </div>
+        <div class="input-group">
+            <span class="icon">✉️</span>
+            <input type="email" id="email-${contactIndex}" placeholder="Email (facultatif)">
+        </div>
+        <div class="input-group">
+            <span class="icon">🏠</span>
+            <input type="text" id="address-${contactIndex}" placeholder="Adresse (facultatif)">
+        </div>
+        <div class="input-group">
+            <span class="icon">🏢</span>
+            <input type="text" id="organization-${contactIndex}" placeholder="Organisation (facultatif)">
+        </div>
+        <div class="input-group">
+            <span class="icon">💼</span>
+            <input type="text" id="jobTitle-${contactIndex}" placeholder="Titre professionnel (facultatif)">
+        </div>
+        <div class="input-group">
+            <span class="icon">🌐</span>
+            <input type="url" id="website-${contactIndex}" placeholder="Site web (facultatif)">
+        </div>
+        <br>
         <button class="button add-button">Ajouter</button>
     `;
     contactForm.appendChild(div);
@@ -46,6 +68,7 @@ function addContactField() {
         }
     });
 }
+
 
 // Génèrer le contenu vCard pour tous les contacts
 function generateVCard() {
@@ -132,6 +155,25 @@ return {
 });
 updatePreview();
 }
+
+ // Copie du contenu vCard dans le presse-papiers
+ copyButton.addEventListener('click', async () => {
+    const vCardText = generateVCard(); 
+    if (vCardText ==='') {
+        alert('Le contenu vcard est vide')
+    } else{
+    try {
+        await navigator.clipboard.writeText(vCardText);
+        copyButton.innerHTML = '<span>✅ Copié!</span>';
+        setTimeout(() => {
+            copyButton.innerHTML = '<span>📋 Copier</span>';
+        }, 2000);
+    } catch (err) {
+        console.error('Erreur lors de la copie :', err);
+    }
+}
+
+});
 
 // Initialise le formulaire avec un champ de contact
 addContactField();
