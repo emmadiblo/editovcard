@@ -5,7 +5,10 @@ const copyButton = document.getElementById('copy');
 const filenameInput = document.getElementById('filename');
 const contactCountElement = document.getElementById('contactCount');
 
+// Variables globales
 let contacts = [];
+let contactIndex = 0;
+let label = document.getElementById("msg");
 
 // Ajoute un nouveau champ pour saisir un contact
 function addContactField() {
@@ -14,7 +17,6 @@ function addContactField() {
     div.id = `contact-${contactIndex}`;
     div.classList.add('contact-entry');
     div.innerHTML = `
-        <label>Entrez pour Contact ${contactIndex + 1}</label><br>
         <div class="input-group">
             <span class="icon">👤</span>
             <input type="text" id="name-${contactIndex}" placeholder="Nom et prénom" required>
@@ -44,7 +46,10 @@ function addContactField() {
             <input type="url" id="website-${contactIndex}" placeholder="Site web (facultatif)">
         </div>
         <br>
-        <button class="button add-button">Ajouter</button>
+   
+         <button class="button add-button"> 
+        ➕ Ajouter le contact
+        </button>
     `;
     contactForm.appendChild(div);
 
@@ -86,11 +91,13 @@ function generateVCard() {
     return vCard;
 }
 
-// Met à jour l'aperçu des vCards
-function updatePreview() {
-    preview.textContent = generateVCard();
-    contactCountElement.textContent = `${contacts.length} contact${contacts.length !== 1 ? 's' : ''}`;
-}
+// Met à jour l'aperçu des vCardsfunction updatePreview() {
+    function updatePreview() {
+        preview.textContent = generateVCard();
+        contactCountElement.textContent = `${contacts.length} contact${contacts.length !== 1 ? 's' : ''}`;
+        label.textContent = `Ajouter le Contact numéro ${contacts.length + 1}`;
+    }
+    
 
 const openFileButton = document.getElementById('openFile');
 const fileInput = document.getElementById('fileInput');
@@ -176,4 +183,4 @@ updatePreview();
 });
 
 // Initialise le formulaire avec un champ de contact
-addContactField();
+addContactField();  

@@ -11,18 +11,19 @@
     <div class="header">
        <a href="./" style="display: flex; 
        justify-content: center; 
-       align-items: center; ">
+       align-items: center;">
         <img src="assets/vcard.png" height="40px" width="auto" alt="">
         <h3>EditoVCard</h3>
         </a>
         <div class="controls">
-            <input type="text" id="filename" class="filename-input" placeholder="nom-du-fichier vcf" value="contacts">
+
+         <input type="text" id="filename" class="filename-input" placeholder="nom-du-fichier vcf" value="contacts">
+     
             <button id="openFile" class="button">
                 <span>📂 Ouvrir</span>
             </button>
             <input type="file" id="fileInput" accept=".vcf" style="display: none;">
             
-
             <button id="download" class="button">
                 <span>⬇️ Télécharger</span>
             </button>
@@ -34,8 +35,10 @@
 
     <div class="main-content">
         <div class="editor-container">
-            <div class="container-title">CONTACTS</div>
+            <div class="container-title">AJOUTER UN CONTACT</div>
+            <span id="msg">Entrez votre premier contact</span>
             <div id="contact-form"></div>
+           
         </div>
         <div class="preview-container">
             <div class="container-title">APERÇU vCard</div>
