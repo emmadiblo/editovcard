@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditoVCard</title>
+    <link rel="shortcut icon" href="assets/vcard.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+       <a href="./" style="display: flex; 
+       justify-content: center; 
+       align-items: center; ">
+        <img src="assets/vcard.png" height="40px" width="auto" alt="">
+        <h3>EditoVCard</h3>
+        </a>
+        <div class="controls">
+            <input type="text" id="filename" class="filename-input" placeholder="nom-du-fichier vcf" value="contacts">
+            <button id="openFile" class="button">
+                <span>📂 Ouvrir</span>
+            </button>
+            <input type="file" id="fileInput" accept=".vcf" style="display: none;">
+            
+
+            <button id="download" class="button">
+                <span>⬇️ Télécharger</span>
+            </button>
+            <button id="copy" class="button">
+                <span>📋 Copier</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="editor-container">
+            <div class="container-title">CONTACTS</div>
+            <div id="contact-form"></div>
+        </div>
+        <div class="preview-container">
+            <div class="container-title">APERÇU vCard</div>
+            <div id="preview"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>
+            <div class="status-bar">
+                <span id="contactCount">0 contact(s)</span>
+            </div>
+            <div class="copy">&copy; 2024 EditoVcard</div>
+            <div class="tools">Autres outils: <a href="https://emmadiblo.github.io/editomark">Editeur de Markdown</a>, <a href="https://emmadiblo.github.io/marktohtml">Convertisseur Markdown vers HTML</a></div>
+        </div>
+        <div>
+            <ul class="socials">
+                <li><a href="https://linkedin.com/in/emmadiblouwizeyimana"><img src="assets/linkedin.svg" alt="LinkedIn"></a></li>
+                <li><a href="https://facebook.com/emmadiblouwizeyimana"><img src="assets/facebook.svg" alt="Facebook"></a></li>
+                <li><a href="https://github.com/emmadiblo"><img src="assets/github.svg" alt="GitHub"></a></li>
+                <li><a href="mailto:emmadiblouwizeyimana@gmail.com"><img src="assets/gmail.svg" alt="Gmail"></a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
